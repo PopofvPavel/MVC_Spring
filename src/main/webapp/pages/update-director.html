@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/director/update}" th:method="post" th:object="${director}">
+    <label for="department">Department:</label>
+    <select id="department" name="department">
+        <option th:each="dept : ${T(com.example.model.Department).values()}"
+                th:value="${dept}" th:text="${#strings.capitalize(dept.toString().toLowerCase())}"></option>
+    </select>
+    <br/>
+    <label for="fullName">Full Name:</label>
+    <input type="hidden" id="fullName" name="fullName" th:field="*{fullName}"/>
+    <br/>
+
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>

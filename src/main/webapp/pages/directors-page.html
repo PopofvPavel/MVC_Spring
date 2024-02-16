@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Directors</title>
+</head>
+<body>
+<h1>Directors table</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Department</th>
+        <th>Full name</th>
+        <th>Employees</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="director: ${directors}">
+        <td th:text="${director.department}">id</td>
+        <td th:text="${director.fullName}">title</td>
+        <td th:text="${director.employees}">title</td>
+
+    <tr>
+    </tbody>
+</table>
+
+<a href="/director/add">Add director</a>  <br>
+
+<form action="/director/update" method="get">
+    <input type="text" name="fullname" placeholder="Input full name">
+    <button type="submit">Update</button>
+</form>
+
+<form action="/director/delete" method="get">
+    <input type="text" name="fullname" placeholder="Input full name">
+    <button type="submit">Delete</button>
+</form>
+
+</body>
+</html>
