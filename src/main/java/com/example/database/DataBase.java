@@ -4,19 +4,31 @@ import com.example.model.Department;
 import com.example.model.Director;
 import com.example.model.Employee;
 import com.example.model.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Component
 public class DataBase {
     private List<Director> directors;
     private List<Employee> employees;
+    private final Logger logger;
+
+    @Autowired
+    public DataBase(Logger logger) {
+        this.logger = logger;
+    }
 
 
+    public void saveLogMessage(String message) {
+        logger.log(message);
+    }
+
+    public String getLogMessageString() {
+        return logger.toString();
+    }
 
     public List<Director> getDirectors() {
         return directors;
@@ -33,6 +45,7 @@ public class DataBase {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
 
     @PostConstruct
     public void init() {
@@ -53,6 +66,7 @@ public class DataBase {
         directors.add(new Director(Department.BACKEND, "Georgiy M.N.", getRandomEmployees(4)));
         directors.add(new Director(Department.BACKEND, "Mikhail", getRandomEmployees(5)));
 
+
     }
 
     List<Employee> getRandomEmployees(int amount) {
@@ -64,4 +78,8 @@ public class DataBase {
         }
         return list;
     }
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.database.DataBase;
 import com.example.model.Director;
 import com.example.model.Employee;
 import com.example.services.DirectorService;
@@ -7,6 +8,7 @@ import com.example.services.EmployeeService;
 import com.example.services.implementation.DirectorNotFoundException;
 import com.example.services.implementation.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ public class DirectorController {
     EmployeeService employeeService;
 
     @Autowired
+    DataBase dataBase;
+    @Autowired
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -35,7 +39,7 @@ public class DirectorController {
     @GetMapping
     public String showDirectorsPage(Model model) {
         model.addAttribute("directors", directorService.getDirectors());
-
+        System.out.println("DB" + dataBase.getLogMessageString());
         return "directors-page";
     }
 
