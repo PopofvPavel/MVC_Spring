@@ -15,7 +15,7 @@
     <label for="fullName">Full Name:</label>
     <input type="text" id="fullName" name="fullName" th:field="*{fullName}"/>
     <br/>
-
+    SELECT EMPLOYEES TO THIS DIRECTOR OR ADD NEW
     <table>
         <thead>
         <tr>
@@ -33,6 +33,7 @@
         <tr>
         </tbody>
     </table>
+    <p th:if="${error}" style="color: red;">Error: <span th:text="${error}"></span></p>
 
     <button type="submit">Add</button>
 </form>

@@ -49,20 +49,26 @@ public class DirectorController {
 
     @PostMapping("/add")
     public String showDirectorsPageOnAddDirector(@ModelAttribute("director") Director director,
-                                                 @RequestParam(value = "added", required = false) List<String> addedEmployeesList) {
-        if (addedEmployeesList != null && !addedEmployeesList.isEmpty()) {
-            System.out.println("Selected " + addedEmployeesList);
-            List<Employee> selectedEmployees = new ArrayList<>();
-            for (String added : addedEmployeesList) {
-                try {
-                    Employee employee = employeeService.getEmployeeByFullName(added);
-                    selectedEmployees.add(employee);
-                } catch (EmployeeNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            director.setEmployees(selectedEmployees);
+                                                 @RequestParam(value = "added", required = false) List<String> addedEmployeesList,
+                                                 Model model) {
+        if (addedEmployeesList == null || addedEmployeesList.size() < 3) {
+            model.addAttribute("error", "You must select at least 3 employees.");
+            System.out.println("Please select at least 3 employees");
+            model.addAttribute("employees", employeeService.getEmployees());
+            return "add_director";
         }
+        System.out.println("Selected " + addedEmployeesList);
+        List<Employee> selectedEmployees = new ArrayList<>();
+        for (String added : addedEmployeesList) {
+            try {
+                Employee employee = employeeService.getEmployeeByFullName(added);
+                selectedEmployees.add(employee);
+            } catch (EmployeeNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        director.setEmployees(selectedEmployees);
+
 
         directorService.createDirector(director);
         return "redirect:/director";
