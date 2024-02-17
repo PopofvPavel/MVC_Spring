@@ -16,7 +16,27 @@
     <input type="text" id="fullName" name="fullName" th:field="*{fullName}"/>
     <br/>
 
+    <table>
+        <thead>
+        <tr>
+            <th>Full name</th>
+            <th>Post</th>
+            <th>Add to director</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee: ${employees}">
+            <td th:text="${employee.fullName}">title</td>
+            <td th:text="${employee.post}">title</td>
+            <td><input type="checkbox" name="added" th:value="${employee.fullName}"></td>
+
+        <tr>
+        </tbody>
+    </table>
+
     <button type="submit">Add</button>
 </form>
+
+
 </body>
 </html>
