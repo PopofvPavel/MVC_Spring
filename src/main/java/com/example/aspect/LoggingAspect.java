@@ -24,7 +24,8 @@ public class LoggingAspect {
         this.dataBase = dataBase;
     }
 
-    @Pointcut("within(com.example..*)")
+    //@Pointcut("within(com.example..*)")
+    @Pointcut("execution(public * com.example.controller.DirectorController.showDirectorsPage(..))")
     public void callAtMyServicePublic() { }
 
     @Before("callAtMyServicePublic()")
