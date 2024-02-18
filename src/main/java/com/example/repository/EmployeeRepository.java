@@ -1,10 +1,8 @@
 package com.example.repository;
 
 import com.example.database.DataBase;
-import com.example.model.Director;
 import com.example.model.Employee;
-import com.example.services.implementation.DirectorNotFoundException;
-import com.example.services.implementation.EmployeeNotFoundException;
+import com.example.services.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

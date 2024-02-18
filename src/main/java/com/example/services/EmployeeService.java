@@ -1,8 +1,7 @@
 package com.example.services;
 
 import com.example.model.Employee;
-import com.example.services.implementation.EmployeeNotFoundException;
-import org.springframework.stereotype.Service;
+import com.example.services.exceptions.EmployeeNotFoundException;
 
 import java.util.List;
 

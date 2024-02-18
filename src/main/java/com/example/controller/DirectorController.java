@@ -5,10 +5,9 @@ import com.example.model.Director;
 import com.example.model.Employee;
 import com.example.services.DirectorService;
 import com.example.services.EmployeeService;
-import com.example.services.implementation.DirectorNotFoundException;
-import com.example.services.implementation.EmployeeNotFoundException;
+import com.example.services.exceptions.DirectorNotFoundException;
+import com.example.services.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +38,7 @@ public class DirectorController {
     @GetMapping
     public String showDirectorsPage(Model model) {
         model.addAttribute("directors", directorService.getDirectors());
-        System.out.println("DB" + dataBase.getLogMessageString());
+        //System.out.println("DB" + dataBase.getLogMessageString());
         return "directors-page";
     }
 
@@ -118,11 +117,7 @@ public class DirectorController {
         return "redirect:/director";
     }
 
-/*    @PostMapping("/delete")
-    public String showFindDirectorPageOnUpdateDirector(@ModelAttribute("director") Director director) {
-        directorService.deleteDirectorByFullName(director.getFullName());
-        return "redirect:/director";
-    }*/
+
 
 
 }

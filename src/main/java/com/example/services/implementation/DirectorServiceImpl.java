@@ -3,6 +3,7 @@ package com.example.services.implementation;
 import com.example.model.Director;
 import com.example.repository.DirectorsRepository;
 import com.example.services.DirectorService;
+import com.example.services.exceptions.DirectorNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.services.implementation;
+package com.example.services.exceptions;
 
 public class EmployeeNotFoundException extends Exception{
 }

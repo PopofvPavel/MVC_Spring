@@ -9,6 +9,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "index"; // Название вашего HTML-шаблона для главной страницы
+        return "index";
     }
 }

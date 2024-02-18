@@ -1,7 +1,7 @@
 package com.example.services;
 
 import com.example.model.Director;
-import com.example.services.implementation.DirectorNotFoundException;
+import com.example.services.exceptions.DirectorNotFoundException;
 
 import java.util.List;
 
