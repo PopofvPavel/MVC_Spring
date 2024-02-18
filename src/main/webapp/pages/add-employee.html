@@ -17,6 +17,7 @@
     <br/>
 
     <button type="submit">Add</button>
+    <p th:if="${error}" style="color: red;">Error: <span th:text="${error}"></span></p>
 </form>
 </body>
 </html>

@@ -73,8 +73,15 @@ public class DirectorController {
         }
         director.setEmployees(selectedEmployees);
 
-
-        directorService.createDirector(director);
+        try {
+            directorService.createDirector(director);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("director", director);
+            model.addAttribute("employees", employeeService.getEmployees());
+            System.out.println("In catch block");
+            return "add_director";
+        }
         return "redirect:/director";
     }
 

@@ -19,10 +19,17 @@ public class DirectorServiceImpl implements DirectorService {
     }
 
     @Override
-    public void createDirector(Director director) {
+    public void createDirector(Director director) throws IllegalArgumentException{
+        checkUniqueName(director.getFullName());
         directorsRepository.addDirector(director);
     }
-
+    private void checkUniqueName(String fullName) throws IllegalArgumentException {
+        boolean hasThisNameInList =  directorsRepository.getDirectors().stream()
+                .anyMatch(d -> d.getFullName().equals(fullName));
+        if (hasThisNameInList) {
+            throw new IllegalArgumentException("Name should be unique, this name is already in the list");
+        }
+    }
     @Override
     public void updateDirector(Director director) {
         directorsRepository.updateDirector(director);

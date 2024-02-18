@@ -18,8 +18,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void createEmployee(Employee employee) {
+    public void createEmployee(Employee employee) throws IllegalArgumentException{
+        checkUniqueName(employee.getFullName());
         employeeRepository.addEmployee(employee);
+    }
+
+    private void checkUniqueName(String fullName) throws IllegalArgumentException {
+        boolean hasThisNameInList =  employeeRepository.getEmployeeList().stream()
+                .anyMatch(e -> e.getFullName().equals(fullName));
+        if (hasThisNameInList) {
+            throw new IllegalArgumentException("Name should be unique, this name is already in the list");
+        }
     }
 
     @Override

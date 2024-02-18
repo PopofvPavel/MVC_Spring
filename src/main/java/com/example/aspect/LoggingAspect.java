@@ -25,7 +25,8 @@ public class LoggingAspect {
     }
 
     //@Pointcut("within(com.example..*)")
-    @Pointcut("execution(public * com.example.controller.DirectorController.showDirectorsPage(..))")
+    //@Pointcut("execution(public * com.example.controller.DirectorController.showDirectorsPage(..))")
+    @Pointcut("execution(public * com.example.controller.*.*(..))")
     public void callAtMyServicePublic() { }
 
     @Before("callAtMyServicePublic()")
