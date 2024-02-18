@@ -60,7 +60,7 @@ public class DirectorController {
             model.addAttribute("employees", employeeService.getEmployees());
             return "add_director";
         }
-        System.out.println("Selected " + addedEmployeesList);
+        //System.out.println("Selected " + addedEmployeesList);
         List<Employee> selectedEmployees = new ArrayList<>();
         for (String added : addedEmployeesList) {
             try {
@@ -105,7 +105,6 @@ public class DirectorController {
 
     @GetMapping("/delete")
     public String deleteDirector(Model model, @RequestParam(value = "fullname") String fullname) {
-        System.out.println("In delete method");
         Director director;
         try {
             director = directorService.getDirectorByFullName(fullname);

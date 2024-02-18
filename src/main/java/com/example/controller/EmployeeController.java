@@ -34,13 +34,12 @@ public class EmployeeController {
 
     @PostMapping("/add")
     public String showEmployeesPageOnAddEmployee(@ModelAttribute("director") Employee employee, Model model) {
-        System.out.println("In post method");
         try {
             employeeService.createEmployee(employee);
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             model.addAttribute("employee", employee);
-            System.out.println("In catch block");
+            //System.out.println("In catch block");
             return "add-employee";
         }
         return "redirect:/employee";
