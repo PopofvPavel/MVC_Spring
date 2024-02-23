@@ -2,6 +2,7 @@ package com.example.services.implementation;
 
 import com.example.model.Director;
 import com.example.repository.DirectorsRepository;
+import com.example.repository.DirectorsRepositoryImpl;
 import com.example.services.DirectorService;
 import com.example.services.exceptions.DirectorNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class DirectorServiceImpl implements DirectorService {
     DirectorsRepository directorsRepository;
 
     @Autowired
-    public void setDirectorsRepository(DirectorsRepository directorsRepository) {
+    public void setDirectorsRepository(DirectorsRepositoryImpl directorsRepository) {
         this.directorsRepository = directorsRepository;
     }
 

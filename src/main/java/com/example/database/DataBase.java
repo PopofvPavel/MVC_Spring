@@ -14,21 +14,13 @@ import java.util.*;
 public class DataBase {
     private List<Director> directors;
     private List<Employee> employees;
-    private final Logger logger;
 
-    @Autowired
-    public DataBase(Logger logger) {
-        this.logger = logger;
-    }
-
+    private List<String> logMessages = new ArrayList<>();
 
     public void saveLogMessage(String message) {
-        logger.log(message);
+        logMessages.add(message);
     }
 
-    public String getLogMessageString() {
-        return logger.toString();
-    }
 
     public List<Director> getDirectors() {
         return directors;

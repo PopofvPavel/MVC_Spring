@@ -2,6 +2,7 @@ package com.example.services.implementation;
 
 import com.example.model.Employee;
 import com.example.repository.EmployeeRepository;
+import com.example.repository.EmployeeRepositoryImpl;
 import com.example.services.EmployeeService;
 import com.example.services.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+    public void setEmployeeRepository(EmployeeRepositoryImpl employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
